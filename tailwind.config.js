@@ -11,6 +11,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      zIndex: {
+        "-1": "-1",
+        "-10": "-10",
+      },
       textColor: {
         skin: {
           base: withOpacity("--color-text-base"),
