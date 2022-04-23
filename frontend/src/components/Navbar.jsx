@@ -12,19 +12,39 @@ const Navbar = () => {
     setOpen(!open);
   };
 
+  const scrollTo = (item) => {
+    const element = document.getElementById(item);
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+    setActive(item);
+  };
+
   return (
     <nav className="text-xl relative">
       <ul className=" hidden md:flex items-center justify-center gap-x-4 ">
-        {["الرئيسية", "من نحن", "اعمالنا", "إتصل بنا"].map((item, index) => {
+        {["الرئيسية", "من نحن", "أعمالنا", "إتصل بنا"].map((item, index) => {
           return (
             <li
               key={index}
+              // id={item}
               className={`${
                 active === item ? "text-skin-inverted" : ""
               } hover:text-skin-muted transition-all duration-200`}
-              onClick={() => setActive(item)}
+              onClick={(e) => {
+                setActive(item);
+              }}
             >
-              <a href={`#${item}`}>{item}</a>
+              <a
+                // id={item}
+                onClick={(e) => {
+                  scrollTo(item);
+                }}
+                // href={`#${item}`}
+              >
+                {item}
+              </a>
             </li>
           );
         })}
